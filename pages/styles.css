@@ -1,0 +1,28 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    color:rgb(197, 1, 1);
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+#tablero .celda{
+    width: 90px;
+    height: 90px;
+    font-size: 3rem;
+    display:grid;
+    place-items: center;
+    border: 1px solid rgb(197, 1, 1);
+    float: left;
+
+}
+
+#tablero{
+    width: 276px;
+    text-align: center;
+    
+}
