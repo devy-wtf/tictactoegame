@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'Pickyside';
+    src: url('../assets/PickysideRegular-vn7w4.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+
+
 body{
     width: 100vw;
     height: 100vh;
@@ -10,19 +22,79 @@ body{
     overflow: hidden;
 }
 
+
+h1{
+    text-align: center;
+    text-shadow: 0 0 10px rgba(197, 1, 1, 0.7), 0 0 20px rgba(197, 1, 1, 0.5);
+    animation: respirarGlow 2.5s ease-in-out infinite;
+    font-family: 'Pickyside', serif;
+}
+
 #tablero .celda{
     width: 90px;
     height: 90px;
     font-size: 3rem;
     display:grid;
+    box-shadow: 0 0 10px rgba(197, 1, 1, 0.7), 0 0 20px rgba(197, 1, 1, 0.5);
     place-items: center;
     border: 1px solid rgb(197, 1, 1);
     float: left;
+    transition: box-shadow 0.3s ease;
 
+}
+
+#tablero .celda:hover {
+    box-shadow: 0 0 15px rgba(197, 1, 1, 0.9), 0 0 30px rgba(197, 1, 1, 0.7);
+    cursor: pointer;
 }
 
 #tablero{
     width: 276px;
-    text-align: center;
-    
+    text-align: center;   
 }
+
+#resultados{
+    position: relative;
+    top: 10px;
+    height: 1rem;
+
+}
+
+
+.animacionMist {
+  animation: fadeMystic 2.5s ease-out forwards;
+}
+
+
+
+@keyframes respirarGlow {
+    0% {
+        text-shadow: 0 0 5px rgba(197, 1, 1, 0.3), 0 0 10px rgba(197, 1, 1, 0.2);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(197, 1, 1, 0.8), 0 0 40px rgba(197, 1, 1, 0.6);
+    }
+    100% {
+        text-shadow: 0 0 5px rgba(197, 1, 1, 0.3), 0 0 10px rgba(197, 1, 1, 0.2);
+    }
+}
+
+
+@keyframes fadeMystic {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    filter: blur(4px) brightness(0.5);
+  }
+  60% {
+    opacity: 0.6;
+    transform: translateY(0px) scale(1);
+    filter: blur(2px) brightness(0.8);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px) brightness(1);
+  }
+}
+
+
