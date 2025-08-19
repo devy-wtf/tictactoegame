@@ -125,6 +125,21 @@ button:hover {
 }
 
 
+.marcado-x {
+  color: #ff0040;
+  text-shadow: 0 0 8px #ff0040;
+  font-family: 'UnifrakturCook', cursive;
+}
+
+.marcado-o {
+  color: #00f0ff;
+  text-shadow: 0 0 8px #00f0ff;
+  font-family: 'UnifrakturCook', cursive;
+}
+
+
+
+
 
 .animacionMist {
   animation: fadeMystic 2.5s ease-out forwards;
