@@ -130,6 +130,11 @@ button:hover {
   animation: fadeMystic 2.5s ease-out forwards;
 }
 
+.magnetic-letter {
+  display: inline-block;
+  transition: transform 0.2s ease, color 0.2s ease;
+  will-change: transform;
+}
 
 
 
