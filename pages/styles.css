@@ -37,10 +37,11 @@ body{
 
 
 h1{
-    text-align: center;
+    text-align: left;
     text-shadow: 0 0 10px rgba(197, 1, 1, 0.7), 0 0 20px rgba(197, 1, 1, 0.5);
     animation: respirarGlow 2.5s ease-in-out infinite;
     font-family: 'Pickyside', serif;
+    text-align: center;
 }
 
 #tablero .celda{
@@ -74,9 +75,63 @@ h1{
 }
 
 
+button {
+  background-color: transparent;
+  border: 2px solid rgb(197, 1, 1);
+  color: rgb(197, 1, 1);
+  font-family: 'Pickyside', serif;
+  font-size: 1rem;
+  padding: 10px 20px;
+  margin: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(197, 1, 1, 0.5);
+  transition: all 0.3s ease;
+  animation: respirarGlow 2.5s ease-in-out infinite;
+}
+
+button:hover {
+  background-color: rgb(197, 1, 1);
+  color: black;
+  box-shadow: 0 0 20px rgba(197, 1, 1, 0.8);
+}
+
+
+.botones {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+ 
+}
+
+.botones button {
+  background-color: transparent;
+  border: 2px solid rgb(197, 1, 1);
+  color: rgb(197, 1, 1);
+  font-family: 'Pickyside', serif;
+  font-size: 1rem;
+  padding: 10px 20px;
+  box-shadow: 0 0 10px rgba(197, 1, 1, 0.5);
+  transition: all 0.3s ease;
+  width: 160px; 
+}
+
+.botones button:hover {
+  background-color: rgb(197, 1, 1);
+  color: black;
+  box-shadow: 0 0 20px rgba(197, 1, 1, 0.8);
+}
+
+
+
 .animacionMist {
   animation: fadeMystic 2.5s ease-out forwards;
 }
+
+
+
 
 
 
@@ -91,6 +146,7 @@ h1{
         text-shadow: 0 0 5px rgba(197, 1, 1, 0.3), 0 0 10px rgba(197, 1, 1, 0.2);
     }
 }
+
 
 
 @keyframes fadeMystic {
@@ -109,5 +165,4 @@ h1{
     filter: blur(0px) brightness(1);
   }
 }
-
 
