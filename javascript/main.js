@@ -1,9 +1,9 @@
-let tablero = array(9).fill("")
+let tablero = ["","","","","","","","",""]
 
 let jugadorActual = "X"
 let juegoTerminado = false
 let turnoCpu =  false
-
+let gameOver = false
 
 const combGanadoras = [
     [0,1,2], [3,4,5], [6,7,8],
@@ -12,40 +12,58 @@ const combGanadoras = [
 ]
 
 
-let gameOver = false
-
-function statusJuego(){
-    for (let combinación of combGanadoras){
-        const [a, b, c] = combinación
-        if(
+function statusJuego() {
+    for (let combinación of combGanadoras) {
+        const [a, b, c] = combinación;
+        if (
             tablero[a] !== "" &&
-            tablero[b] === tablero[b] &&
-            tablero[c] === tablero[c]
+            tablero[a] === tablero[b] &&
+            tablero[a] === tablero[c]
+        ) {
+            gameOver = true;
+            mostrarResultado(`Ganador: Jugador ${tablero[a] === "X" ? "1" : "2"}`)
+            break;
+        }
+    }
+    if(!tablero.includes("") && !gameOver){
+        gameOver = true
+        mostrarResultado("Empate")
+    }
 
 
-        )}
-    
+
 }
 
+
+
+function mostrarResultado(message){
+    const resultadoElement = document.getElementById('resultado')
+    resultadoElement.textContent = message
+    resultadoElement.classList.add('visible     ')
+
+}
 
 
 
 const celdas = document.querySelectorAll('.celda')
 
-celdas.forEach(celda =>{
-    const index = parseInt(celda.dataset.index)
-    cell.addEventListener("click", () => movimiento(index, celda))
-}
+celdas.forEach((celda, index) => {
+  celda.setAttribute("data-index", index);
+  celda.addEventListener("click", () => movimiento(index, celda));
+});
 
-)
 
 
 function movimiento(index, celdaElement){
-    if(tablero[index] !== "") return;
+    if(tablero[index] !== "" || gameOver) return;
 
     tablero[index] = jugadorActual
-    celdaElement.textContent = jugadorActual
-    celdaElement.classList.add(`marcado-${currentPlayer.toLowerCase()}`);
+    const marca = document.createElement ('p')
+    marca.textContent = jugadorActual
+    celdaElement.classList.add(`marcado-${jugadorActual.toLowerCase()}`)
+    celdaElement.appendChild(marca)
+
+    statusJuego()
 
 
     jugadorActual = jugadorActual === "X" ? "O" : "X"

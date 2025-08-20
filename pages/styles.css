@@ -26,7 +26,7 @@ body::before{
 
 body{
     width: 100vw;
-    height: 100vh;
+    height: 100vh;  
     color:rgb(197, 1, 1);
     font-family: 'Courier New', Courier, monospace;
     margin: 0;
@@ -34,6 +34,13 @@ body{
     place-items: center;
     overflow: hidden;
 }
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+  
 
 
 h1{
@@ -44,17 +51,17 @@ h1{
     text-align: center;
 }
 
-#tablero .celda{
-    width: 90px;
-    height: 90px;
-    font-size: 3rem;
-    display:grid;
-    box-shadow: 0 0 10px rgba(197, 1, 1, 0.7), 0 0 20px rgba(197, 1, 1, 0.5);
-    place-items: center;
-    border: 1px solid rgb(197, 1, 1);
-    float: left;
-    transition: box-shadow 0.3s ease;
-
+.celda {
+  width: 90px;
+  height: 90px;
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(197, 1, 1);
+  box-shadow: 0 0 10px rgba(197, 1, 1, 0.7), 0 0 20px rgba(197, 1, 1, 0.5);
+  box-sizing: border-box;
+  cursor: pointer;
 }
 
 #tablero .celda:hover {
@@ -62,10 +69,18 @@ h1{
     cursor: pointer;
 }
 
-#tablero{
-    width: 276px;
-    text-align: center;   
+#tablero {
+  display: grid;
+  grid-template-columns: repeat(3, 90px);
+  grid-template-rows: repeat(3, 90px);
+  gap: 2px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
+
+
 
 #resultados{
     position: relative;
@@ -128,15 +143,37 @@ button:hover {
 .marcado-x {
   color: #ff0040;
   text-shadow: 0 0 8px #ff0040;
-  font-family: 'UnifrakturCook', cursive;
+  font-family: 'Pickyside', cursive;
+}
+
+
+.marcado {
+  font-family: 'Pickyside', cursive;
+  font-size: 2.5rem;
+  margin: 0;
+  text-align: center;
+  animation: fadeIn 0.4s ease-in;
 }
 
 .marcado-o {
-  color: #00f0ff;
-  text-shadow: 0 0 8px #00f0ff;
-  font-family: 'UnifrakturCook', cursive;
+  color: #e4ecec;
+  text-shadow: 0 0 8px #ad0707;
+  font-family: 'Pickyside', cursive;
 }
 
+.textoResultado {
+  font-family: 'Pickyside', cursive;
+  font-size: 2rem;
+  color: #ff0040;
+  text-shadow: 0 0 10px #ff0040;
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.textoResultado.visible {
+  opacity: 1;
+}
 
 
 
