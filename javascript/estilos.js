@@ -1,6 +1,15 @@
         const magneticButtons = document.querySelectorAll('.botones button');
         const magneticText = document.getElementById('tituloMain');
 
+
+
+        window.addEventListener('click', () => {
+        const audio = document.getElementById('bg-audio');
+          if (audio.paused) {
+        audio.play();
+  }
+});
+
         magneticButtons.forEach(button => {
             button.addEventListener('mouseenter', () => {
                 button.style.transform = 'scale(1.05)';
