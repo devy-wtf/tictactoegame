@@ -18,13 +18,13 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.remove("modo-cpu");
 
     reiniciarJuego()
-})
+})  
 
 
 document.getElementById('vsCpu').addEventListener("click", () =>{
     modoJuego = "cpu"
     document.body.classList.add("modo-cpu");
-    reiniciarJuego()
+    reiniciarJuego()  
 })
 
 });
@@ -54,6 +54,7 @@ function movimiento(index, celdaElement) {
   jugadorActual = jugadorActual === "X" ? "O" : "X";
 
   if(modoJuego === "cpu" && jugadorActual === "O"){
+    console.log("Modo actual: ", modoJuego)
     setTimeout(jugadaBot, 300)
   }
   }
@@ -85,8 +86,11 @@ function statusJuego() {
 
 function jugadaBot(){
     const mejorMovimiento = obtenerMejorMovimiento(tablero)
+       console.log(" Bot elige: ", mejorMovimiento)
+    if(mejorMovimiento !==null){  
     const celdaBot = document.querySelectorAll('.celda')[mejorMovimiento]
-    movimiento(mejorMovimiento, celdaBot)
+     movimiento(mejorMovimiento, celdaBot)
+    }
 }
 
 
@@ -94,17 +98,17 @@ function obtenerMejorMovimiento(tableroActual){
     let mejorScore = -Infinity
     let movimiento = null
 
-    for(let index = 0; i < tableroActual.length; i++){
-        if (tableroActual[i] ===""){
-            tableroActual[i]= "O"
+    for(let index = 0; index < tableroActual.length; index++){
+        if (tableroActual[index] ===""){
+            tableroActual[index]= "O"
             let score = minimax(tableroActual, 0, false)
-            tableroActual[i] = ""
+            tableroActual[index] = ""
 
 
 
             if (score > mejorScore) {
                 mejorScore = score
-                movimiento = i
+                movimiento = index
                 
             }
         }
@@ -130,19 +134,18 @@ function minimax(tableroSimulado, profundidad, esMaximizador) {
         }
         return mejorScore
 
-    } else{
-        let peorScore = -Infinity
-        for(let i = 0; i<tableroSimulado.length; i++){
+    } else {
+    let peorScore = Infinity // ← también debes corregir esto
+    for(let i = 0; i < tableroSimulado.length; i++) {
+        if (tableroSimulado[i] === "") { // ← esta línea es clave
             tableroSimulado[i] = "X"
             let score = minimax(tableroSimulado, profundidad + 1, true)
             tableroSimulado[i] = ""
             peorScore = Math.min(score, peorScore)
         }
-        return peorScore
     }
-    
-
-
+    return peorScore
+}
 }
 
 
@@ -175,18 +178,8 @@ function reiniciarJuego() {
   gameOver = false;
 
   const resultado = document.getElementById("resultado");
-  resultado.textContent = "";
-  resultado.classList.remove("visible");
+    resultado.textContent = "";
+    resultado.classList.remove("visible");
 
   asignarCualidades();
 }
-
-
-
-
-
-
-
-
-
-
